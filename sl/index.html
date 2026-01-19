@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SL铸币服务器 - 官方游戏服务器</title>
+    <meta name="description" content="SL铸币服务器 - 专业的Minecraft游戏服务器，提供稳定、安全、有趣的游戏体验">
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-content">
+                <div class="logo">SL铸币服务器</div>
+                <ul class="nav-links">
+                    <li><a href="#home" class="active">首页</a></li>
+                    <li><a href="#announcements">公告</a></li>
+                    <li><a href="#rules">服务器规则</a></li>
+                    <li><a href="#plugins">插件列表</a></li>
+                    <li><a href="#staff">管理人员</a></li>
+                    <li><a href="#contact">联系我们</a></li>
+                </ul>
+                <div class="nav-auth">
+                    <a href="#" class="btn btn-outline" onclick="showModal('loginModal')">登录</a>
+                    <a href="#" class="btn btn-primary" onclick="showModal('registerModal')">注册</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主内容 -->
+    <main class="main-content">
+        <!-- 英雄区域 -->
+        <section id="home" class="hero">
+            <div class="container">
+                <h1>SL铸币服务器</h1>
+                <p class="subtitle">专业 · 稳定 · 有趣的游戏体验</p>
+                <div class="server-status">
+                    <div class="status-indicator"></div>
+                    <span>服务器在线</span>
+                </div>
+                <div style="margin-top: 2rem;">
+                    <a href="#announcements" class="btn btn-secondary">
+                        <i class="fas fa-bullhorn"></i> 查看公告
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 公告区域 -->
+        <section id="announcements" class="container">
+            <div class="card">
+                <h2><i class="fas fa-bullhorn"></i> 最新公告</h2>
+                <div id="announcementsList">
+                    <div class="alert alert-info">
+                        <strong>欢迎加入SL铸币服务器！</strong><br>
+                        全新的冒险等待着你，快来体验独特的游戏内容吧！
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 1rem;">
+                    <a href="#announcements" class="btn btn-outline" onclick="loadAllAnnouncements()">查看所有公告</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 服务器特性 -->
+        <section id="features" class="container">
+            <div class="card">
+                <h2><i class="fas fa-star"></i> 服务器特性</h2>
+                <div id="featuresList">
+                    <!-- 特性将通过JavaScript动态加载 -->
+                    <div class="loading">正在加载服务器特性...</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 服务器规则 -->
+        <section id="rules" class="container">
+            <div class="card">
+                <h2><i class="fas fa-gavel"></i> 服务器规则</h2>
+                <div id="rulesList" class="grid grid-1">
+                    <!-- 规则将通过JavaScript动态加载 -->
+                    <div class="loading">正在加载服务器规则...</div>
+                </div>
+                <div style="text-align: center; margin-top: 1rem;">
+                    <a href="#rules" class="btn btn-outline">查看完整规则</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 插件列表 -->
+        <section id="plugins" class="container">
+            <div class="card">
+                <h2><i class="fas fa-puzzle-piece"></i> 服务器插件</h2>
+                <div id="pluginsList" class="grid grid-2">
+                    <!-- 插件将通过JavaScript动态加载 -->
+                    <div class="loading">正在加载服务器插件...</div>
+                </div>
+                <div style="text-align: center; margin-top: 1rem;">
+                    <a href="#plugins" class="btn btn-outline">查看所有插件</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 管理人员 -->
+        <section id="staff" class="container">
+            <div class="card">
+                <h2><i class="fas fa-users"></i> 管理人员</h2>
+                <div id="staffList" class="grid grid-4">
+                    <!-- 管理人员将通过JavaScript动态加载 -->
+                    <div class="loading">正在加载管理人员...</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 服务器状态 -->
+        <section class="container">
+            <div class="card">
+                <h2><i class="fas fa-server"></i> 服务器状态</h2>
+                <div class="grid grid-1">
+                    <div>
+                        <h3>服务器状态</h3>
+                        <p><span class="text-success">在线</span></p>
+                        <small>延迟: 25ms</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 联系我们 -->
+        <section id="contact" class="container">
+            <div class="card">
+                <h2><i class="fas fa-envelope"></i> 联系我们</h2>
+                <div>
+                    <p>如果您有任何问题或建议，请通过以下方式联系我们：</p>
+                    <ul>
+                        <li>邮箱：support@slserver.com</li>
+                        <li>Discord：SL铸币服务器</li>
+                        <li>QQ群：123456789</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 登录模态框 -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="hideModal('loginModal')">×</button>
+            <h2><i class="fas fa-sign-in-alt"></i> 登录</h2>
+            <form id="loginForm" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label class="form-label">用户名</label>
+                    <input type="text" class="form-input" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">密码</label>
+                    <input type="password" class="form-input" name="password" required>
+                </div>
+                <div id="loginMessage"></div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">
+                    <span id="loginBtnText">登录</span>
+                    <span id="loginLoading" class="loading hidden"></span>
+                </button>
+            </form>
+            <p style="text-align: center; margin-top: 1rem;">
+                还没有账号？<a href="#" onclick="switchModal('loginModal', 'registerModal')">立即注册</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- 注册模态框 -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="hideModal('registerModal')">×</button>
+            <h2><i class="fas fa-user-plus"></i>注册</h2>
+            <form id="registerForm" onsubmit="handleRegister(event)">
+                <div class="form-group">
+                    <label class="form-label">用户名</label>
+                    <input type="text" class="form-input" name="username" required minlength="3" maxlength="20">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">邮箱</label>
+                    <input type="email" class="form-input" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">密码</label>
+                    <input type="password" class="form-input" name="password" required minlength="6">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">确认密码</label>
+                    <input type="password" class="form-input" name="confirm_password" required minlength="6">
+                </div>
+                <div id="registerMessage"></div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">
+                    <span id="registerBtnText">注册</span>
+                    <span id="registerLoading" class="loading hidden"></span>
+                </button>
+            </form>
+            <p style="text-align: center; margin-top: 1rem;">
+                已有账号？<a href="#" onclick="switchModal('registerModal', 'loginModal')">立即登录</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // 全局变量
+        let currentUser = null;
+        let serverIP = 'play.slserver.com';
+
+        // 初始化
+document.addEventListener('DOMContentLoaded', function() {
+    checkLoginStatus();
+    loadAnnouncements();
+    loadServerFeatures();
+    loadServerRules();
+    loadServerPlugins();
+    loadStaffMembers();
+    
+    // 初始化导航高亮
+    updateNavHighlight();
+    
+    // 添加滚动监听
+    window.addEventListener('scroll', updateNavHighlight);
+    
+    // 添加导航点击监听
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', function(e) {
+            // 移除所有激活状态
+            document.querySelectorAll('.nav-links a').forEach(l => l.classList.remove('active'));
+            // 设置当前点击的链接为激活状态
+            this.classList.add('active');
+        });
+    });
+});
+
+// 更新导航高亮状态
+function updateNavHighlight() {
+    const sections = document.querySelectorAll('section[id]');
+    const scrollY = window.pageYOffset;
+    
+    sections.forEach(current => {
+        const sectionHeight = current.offsetHeight;
+        const sectionTop = current.offsetTop - 100; // 100px的偏移量
+        const sectionId = current.getAttribute('id');
+        
+        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+            // 移除所有激活状态
+            document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active'));
+            // 设置当前部分对应的链接为激活状态
+            const activeLink = document.querySelector(`.nav-links a[href="#${sectionId}"]`);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+        }
+    });
+}
+
+
+
+        // 显示模态框
+        function showModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // 隐藏模态框
+        function hideModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // 切换模态框
+        function switchModal(hideId, showId) {
+            hideModal(hideId);
+            setTimeout(() => showModal(showId), 300);
+        }
+
+
+
+        // 显示警告消息
+        function showAlert(type, message) {
+            const alertBox = document.createElement('div');
+            const alertClass = type === 'success' ? 'alert-success' : 
+                             type === 'error' ? 'alert-error' : 'alert-info';
+            alertBox.className = `alert ${alertClass}`;
+            alertBox.innerHTML = message;
+            
+            document.body.appendChild(alertBox);
+            
+            setTimeout(() => {
+                alertBox.remove();
+            }, 3000);
+        }
+
+        // 输入验证函数
+        function validateInput(input, type) {
+            const patterns = {
+                username: /^[a-zA-Z0-9_-]{3,20}$/,
+                email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                password: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&.])[A-Za-z\d@$!%*?&.]{8,}$/
+            };
+            
+            if (!patterns[type]) return true;
+            return patterns[type].test(input);
+        }
+        
+        // XSS防护函数
+        function escapeHtml(text) {
+            const map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            };
+            return text.replace(/[&<>"']/g, m => map[m]);
+        }
+        
+        // 处理登录
+        function handleLogin(event) {
+            event.preventDefault();
+            const form = event.target;
+            const formData = new FormData(form);
+            const username = formData.get('username').trim();
+            const password = formData.get('password');
+            
+            // 输入验证
+            if (!validateInput(username, 'username')) {
+                document.getElementById('loginMessage').innerHTML = 
+                    `<div class="alert alert-error">用户名格式不正确（3-20个字符，仅限字母、数字、下划线和连字符）</div>`;
+                return;
+            }
+            
+            // 登录时密码验证只检查基本格式，不强制要求特殊字符
+            if (password.length < 6 || !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d@$!%*?&.]{6,}$/.test(password)) {
+                document.getElementById('loginMessage').innerHTML = 
+                    `<div class="alert alert-error">密码格式不正确（至少6位，包含大小写字母和数字）</div>`;
+                return;
+            }
+            
+            // 显示加载状态
+            document.getElementById('loginBtnText').classList.add('hidden');
+            document.getElementById('loginLoading').classList.remove('hidden');
+            
+            // 使用后端API进行登录验证
+            fetch('api/login.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Requested-With': 'XMLHttpRequest'
+                },
+                body: JSON.stringify({
+                    username: username,
+                    password: password
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    currentUser = {
+                        id: data.user.id, 
+                        username: data.user.username, 
+                        email: data.user.email,
+                        role: data.user.role,
+                        avatar: data.user.avatar || 'default.png'
+                    };
+                    localStorage.setItem('sl_server_current_user', JSON.stringify(currentUser));
+                    localStorage.setItem('sl_server_token', data.token);
+                    showAlert('success', '登录成功！');
+                    hideModal('loginModal');
+                    updateUIForLoggedInUser();
+                    document.getElementById('loginMessage').innerHTML = '';
+                } else {
+                    document.getElementById('loginMessage').innerHTML = 
+                        `<div class="alert alert-error">${escapeHtml(data.message)}</div>`;
+                }
+            })
+            .catch(error => {
+                console.error('登录错误:', error);
+                document.getElementById('loginMessage').innerHTML = 
+                    `<div class="alert alert-error">登录失败，请稍后重试</div>`;
+            })
+            .finally(() => {
+                document.getElementById('loginBtnText').classList.remove('hidden');
+                document.getElementById('loginLoading').classList.add('hidden');
+            });
+        }
+
+        // 处理注册
+        function handleRegister(event) {
+            event.preventDefault();
+            const form = event.target;
+            const formData = new FormData(form);
+            const username = formData.get('username').trim();
+            const email = formData.get('email').trim();
+            const password = formData.get('password');
+            const confirmPassword = formData.get('confirm_password');
+            
+            // 输入验证
+            if (!validateInput(username, 'username')) {
+                document.getElementById('registerMessage').innerHTML = 
+                    `<div class="alert alert-error">用户名格式不正确（3-20个字符，仅限字母、数字、下划线和连字符）</div>`;
+                return;
+            }
+            
+            if (!validateInput(email, 'email')) {
+                document.getElementById('registerMessage').innerHTML = 
+                    `<div class="alert alert-error">邮箱格式不正确</div>`;
+                return;
+            }
+            
+            if (!validateInput(password, 'password')) {
+                document.getElementById('registerMessage').innerHTML = 
+                    `<div class="alert alert-error">密码格式不正确（至少8位，必须包含大小写字母、数字和特殊字符）</div>`;
+                return;
+            }
+            
+            // 验证密码匹配
+            if (password !== confirmPassword) {
+                document.getElementById('registerMessage').innerHTML = 
+                    `<div class="alert alert-error">密码不匹配</div>`;
+                return;
+            }
+            
+            // 显示加载状态
+            document.getElementById('registerBtnText').classList.add('hidden');
+            document.getElementById('registerLoading').classList.remove('hidden');
+            
+            // 使用后端API进行注册
+            fetch('api/register.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Requested-With': 'XMLHttpRequest'
+                },
+                body: JSON.stringify({
+                    username: username,
+                    email: email,
+                    password: password,
+                    confirm_password: confirmPassword
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showAlert('success', '注册成功！请登录。');
+                    hideModal('registerModal');
+                    setTimeout(() => showModal('loginModal'), 500);
+                    document.getElementById('registerMessage').innerHTML = '';
+                } else {
+                    document.getElementById('registerMessage').innerHTML = 
+                        `<div class="alert alert-error">${escapeHtml(data.message)}</div>`;
+                }
+            })
+            .catch(error => {
+                console.error('注册错误:', error);
+                document.getElementById('registerMessage').innerHTML = 
+                    `<div class="alert alert-error">注册失败，请稍后重试</div>`;
+            })
+            .finally(() => {
+                document.getElementById('registerBtnText').classList.remove('hidden');
+                document.getElementById('registerLoading').classList.add('hidden');
+            });
+        }
+
+        // 检查登录状态
+        function checkLoginStatus() {
+            // 从本地存储获取当前用户
+            const storedUser = localStorage.getItem('sl_server_current_user');
+            const token = localStorage.getItem('sl_server_token');
+            
+            if (storedUser && token) {
+                try {
+                    currentUser = JSON.parse(storedUser);
+                    // 确保currentUser包含avatar字段
+                    if (!currentUser.avatar) {
+                        currentUser.avatar = 'default.png';
+                    }
+                    // 验证token有效性
+                    fetch('api/check_auth.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-Requested-With': 'XMLHttpRequest'
+                        },
+                        body: JSON.stringify({token: token})
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (!data.valid) {
+                            // token无效，清除登录状态
+                            logout();
+                        } else {
+                            updateUIForLoggedInUser();
+                        }
+                    })
+                    .catch(error => {
+                        console.error('验证登录状态失败:', error);
+                        logout();
+});
+                } catch (e) {
+                    console.error('解析用户数据失败:', e);
+                    localStorage.removeItem('sl_server_current_user');
+                    localStorage.removeItem('sl_server_token');
+                }
+            }
+        }
+
+        // 更新UI为已登录状态
+        function updateUIForLoggedInUser() {
+            const navAuth = document.querySelector('.nav-auth');
+            if (currentUser) {
+                navAuth.innerHTML = `
+                    <div class="user-info">
+                        <div class="user-avatar" style="width: 32px; height: 32px; border-radius: 50%; overflow: hidden; margin-right: 10px; display: inline-block;">
+                            ${currentUser.avatar && currentUser.avatar !== 'default.png' ? `<img src="${escapeHtml(currentUser.avatar)}" alt="${escapeHtml(currentUser.username)}的头像" style="width: 100%; height: 100%; object-fit: cover;">` : `<div style="width: 100%; height: 100%; background: #666; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px;">${currentUser.username.substring(0, 2).toUpperCase()}</div>`}
+                        </div>
+                        <span style="vertical-align: middle;">欢迎, ${currentUser.username}!</span>
+                    </div>
+                    <a href="#" class="btn btn-outline" onclick="logout()">退出</a>
+                `;
+            }
+        }
+
+        // 退出登录
+        function logout() {
+            // 通知后端退出
+            const token = localStorage.getItem('sl_server_token');
+            if (token) {
+                fetch('api/auth.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-Requested-With': 'XMLHttpRequest'
+                    },
+                    body: JSON.stringify({action: 'logout', token: token})
+                }).catch(error => console.error('退出登录错误:', error));
+            }
+            
+            currentUser = null;
+            localStorage.removeItem('sl_server_current_user');
+            localStorage.removeItem('sl_server_token');
+            location.reload();
+        }
+
+        // 加载公告
+        function loadAnnouncements() {
+            // 使用直接的PHP脚本获取公告，避免复杂的API逻辑
+            fetch('announcements.php')
+            .then(response => response.text())
+            .then(html => {
+                // 从HTML中提取公告内容
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const announcements = doc.querySelectorAll('.announcement-item');
+                
+                const announcementsList = document.getElementById('announcementsList');
+                
+                if (announcements.length > 0) {
+                    // 默认只显示前5条
+                    const visibleCount = 5;
+                    const isExpandable = announcements.length > visibleCount;
+                    
+                    announcementsList.innerHTML = '';
+                    
+                    // 显示可见的公告
+                    Array.from(announcements).slice(0, visibleCount).forEach(announcement => {
+                        const div = document.createElement('div');
+                        div.className = 'alert alert-info';
+                        div.innerHTML = announcement.innerHTML;
+                        announcementsList.appendChild(div);
+                    });
+                    
+                    // 如果有更多公告，添加展开按钮
+                    if (isExpandable) {
+                        const expandBtn = document.createElement('button');
+                        expandBtn.className = 'btn btn-outline mt-2';
+                        expandBtn.innerHTML = '<i class="fas fa-chevron-down"></i> 查看全部公告';
+                        expandBtn.onclick = () => {
+                            // 显示所有公告
+                            announcementsList.innerHTML = '';
+                            Array.from(announcements).forEach(announcement => {
+                                const div = document.createElement('div');
+                                div.className = 'alert alert-info';
+                                div.innerHTML = announcement.innerHTML;
+                                announcementsList.appendChild(div);
+                            });
+                            
+                            // 添加收起按钮
+                            const collapseBtn = document.createElement('button');
+                            collapseBtn.className = 'btn btn-outline mt-2';
+                            collapseBtn.innerHTML = '<i class="fas fa-chevron-up"></i> 收起公告';
+                            collapseBtn.onclick = () => {
+                                // 重新调用加载函数显示前5条
+                                loadAnnouncements();
+                            };
+                            announcementsList.appendChild(collapseBtn);
+                        };
+                        announcementsList.appendChild(expandBtn);
+                    }
+                } else {
+                    // 如果没有公告，显示默认欢迎消息
+                    announcementsList.innerHTML = `
+                        <div class="alert alert-info">
+                            <strong>欢迎来到SL铸币服务器！</strong><br>
+                            全新的冒险等待着你，快来体验独特的游戏内容吧！
+                        </div>
+                    `;
+                }
+            })
+            .catch(error => {
+                console.error('加载公告失败:', error);
+                // 如果API失败，显示默认欢迎消息
+                const announcementsList = document.getElementById('announcementsList');
+                announcementsList.innerHTML = `
+                    <div class="alert alert-info">
+                        <strong>欢迎来到SL铸币服务器！</strong><br>
+                        全新的冒险等待着你，快来体验独特的游戏内容吧！
+                    </div>
+                `;
+            });
+        }
+        
+        // 加载服务器规则
+        function loadServerRules() {
+            // 使用API获取服务器规则
+            fetch('api/content.php?action=rules')
+            .then(response => response.json())
+            .then(data => {
+                const rulesList = document.getElementById('rulesList');
+                
+                if (data.success && data.data && data.data.length > 0) {
+                    // 默认只显示前5条
+                    const visibleCount = 5;
+                    const isExpandable = data.data.length > visibleCount;
+                    
+                    rulesList.innerHTML = '';
+                    
+                    // 显示可见的规则
+                    data.data.slice(0, visibleCount).forEach(rule => {
+                        const div = document.createElement('div');
+                        div.className = 'plugin-item';
+                        div.innerHTML = `
+                            <div class="plugin-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div>
+                                <h3>${escapeHtml(rule.title)}</h3>
+                                <p>${escapeHtml(rule.content)}</p>
+                            </div>
+                        `;
+                        rulesList.appendChild(div);
+                    });
+                    
+                    // 如果有更多规则，添加展开按钮
+                    if (isExpandable) {
+                        const expandBtn = document.createElement('button');
+                        expandBtn.className = 'btn btn-outline mt-2';
+                        expandBtn.innerHTML = '<i class="fas fa-chevron-down"></i> 查看全部规则';
+                        expandBtn.onclick = () => {
+                            // 显示所有规则
+                            rulesList.innerHTML = '';
+                            data.data.forEach(rule => {
+                                const div = document.createElement('div');
+                                div.className = 'plugin-item';
+                                div.innerHTML = `
+                                    <div class="plugin-icon">
+                                        <i class="fas fa-shield-alt"></i>
+                                    </div>
+                                    <div>
+                                        <h3>${escapeHtml(rule.title)}</h3>
+                                        <p>${escapeHtml(rule.content)}</p>
+                                    </div>
+                                `;
+                                rulesList.appendChild(div);
+                            });
+                            
+                            // 添加收起按钮
+                            const collapseBtn = document.createElement('button');
+                            collapseBtn.className = 'btn btn-outline mt-2';
+                            collapseBtn.innerHTML = '<i class="fas fa-chevron-up"></i> 收起规则';
+                            collapseBtn.onclick = () => {
+                                // 重新调用加载函数显示前5条
+                                loadServerRules();
+                            };
+                            rulesList.appendChild(collapseBtn);
+                        };
+                        rulesList.appendChild(expandBtn);
+                    }
+                } else {
+                    // 如果没有规则，显示默认消息
+                    rulesList.innerHTML = `
+                        <div class="alert alert-info">
+                            <strong>服务器规则</strong><br>
+                            当前没有可用的服务器规则信息。
+                        </div>
+                    `;
+                }
+            })
+            .catch(error => {
+                console.error('加载服务器规则失败:', error);
+                // 如果API失败，显示默认消息
+                const rulesList = document.getElementById('rulesList');
+                rulesList.innerHTML = `
+                    <div class="alert alert-error">
+                        <strong>错误</strong><br>
+                        加载服务器规则失败，请稍后重试。
+                    </div>
+                `;
+            });
+        }
+        
+        // 加载服务器特性
+        function loadServerFeatures() {
+            // 使用API获取服务器特性
+            fetch('api/content.php?action=features')
+            .then(response => response.json())
+            .then(data => {
+                const featuresList = document.getElementById('featuresList');
+                
+                if (data.success && data.data && data.data.length > 0) {
+                    // 默认只显示前5条
+                    const visibleCount = 5;
+                    const isExpandable = data.data.length > visibleCount;
+                    
+                    featuresList.innerHTML = '';
+                    
+                    // 显示可见的特性
+                    data.data.slice(0, visibleCount).forEach(feature => {
+                        const div = document.createElement('div');
+                        div.className = 'alert alert-info';
+                        div.innerHTML = `
+                            <strong>${escapeHtml(feature.title)}</strong><br>
+                            ${escapeHtml(feature.content)}
+                        `;
+                        featuresList.appendChild(div);
+                    });
+                    
+                    // 如果有更多特性，添加展开按钮
+                    if (isExpandable) {
+                        const expandBtn = document.createElement('button');
+                        expandBtn.className = 'btn btn-outline mt-2';
+                        expandBtn.innerHTML = '<i class="fas fa-chevron-down"></i> 查看全部特性';
+                        expandBtn.onclick = () => {
+                            // 显示所有特性
+                            featuresList.innerHTML = '';
+                            data.data.forEach(feature => {
+                                const div = document.createElement('div');
+                                div.className = 'alert alert-info';
+                                div.innerHTML = `
+                                    <strong>${escapeHtml(feature.title)}</strong><br>
+                                    ${escapeHtml(feature.content)}
+                                `;
+                                featuresList.appendChild(div);
+                            });
+                            
+                            // 添加收起按钮
+                            const collapseBtn = document.createElement('button');
+                            collapseBtn.className = 'btn btn-outline mt-2';
+                            collapseBtn.innerHTML = '<i class="fas fa-chevron-up"></i> 收起特性';
+                            collapseBtn.onclick = () => {
+                                // 重新调用加载函数显示前5条
+                                loadServerFeatures();
+                            };
+                            featuresList.appendChild(collapseBtn);
+                        };
+                        featuresList.appendChild(expandBtn);
+                    }
+                } else {
+                    // 如果没有特性，显示默认消息
+                    featuresList.innerHTML = `
+                        <div class="alert alert-info">
+                            <strong>服务器特性</strong><br>
+                            当前没有可用的服务器特性信息。
+                        </div>
+                    `;
+                }
+            })
+            .catch(error => {
+                console.error('加载服务器特性失败:', error);
+                // 如果API失败，显示默认消息
+                const featuresList = document.getElementById('featuresList');
+                featuresList.innerHTML = `
+                    <div class="alert alert-error">
+                        <strong>错误</strong><br>
+                        加载服务器特性失败，请稍后重试。
+                    </div>
+                `;
+            });
+        }
+        
+        // 加载服务器插件
+        function loadServerPlugins() {
+            // 使用API获取服务器插件
+            fetch('api/content.php?action=plugins')
+            .then(response => response.json())
+            .then(data => {
+                const pluginsList = document.getElementById('pluginsList');
+                
+                if (data.success && data.data && data.data.length > 0) {
+                    pluginsList.innerHTML = '';
+                    data.data.forEach(plugin => {
+                        const div = document.createElement('div');
+                        div.className = 'plugin-item';
+                        div.innerHTML = `
+                            <div class="plugin-icon">
+                                <i class="fas fa-puzzle-piece"></i>
+                            </div>
+                            <div>
+                                <h3>${escapeHtml(plugin.name)}</h3>
+                                <p>${escapeHtml(plugin.description)}</p>
+                                <small>版本: ${escapeHtml(plugin.version)} | ${escapeHtml(plugin.author)}</small>
+                            </div>
+                        `;
+                        pluginsList.appendChild(div);
+                    });
+                } else {
+                    // 如果没有插件，显示默认消息
+                    pluginsList.innerHTML = `
+                        <div class="alert alert-info">
+                            <strong>服务器插件</strong><br>
+                            当前没有可用的服务器插件信息。
+                        </div>
+                    `;
+                }
+            })
+            .catch(error => {
+                console.error('加载服务器插件失败:', error);
+                // 如果API失败，显示默认消息
+                const pluginsList = document.getElementById('pluginsList');
+                pluginsList.innerHTML = `
+                    <div class="alert alert-error">
+                        <strong>错误</strong><br>
+                        加载服务器插件失败，请稍后重试。
+                    </div>
+                `;
+            });
+        }
+        
+        // 加载管理人员
+        function loadStaffMembers() {
+            // 使用API获取管理人员
+            fetch('api/content.php?action=staff')
+            .then(response => response.json())
+            .then(data => {
+                const staffList = document.getElementById('staffList');
+                
+                if (data.success && data.data && data.data.length > 0) {
+                    staffList.innerHTML = '';
+                    data.data.forEach(staff => {
+                        const div = document.createElement('div');
+                        div.className = 'staff-card';
+                        div.innerHTML = `
+                            <div class="staff-avatar">
+                                ${staff.avatar && staff.avatar !== 'default.png' ? `<img src="${escapeHtml(staff.avatar)}" alt="${escapeHtml(staff.username)}的头像">` : staff.username.substring(0, 2).toUpperCase()}
+                            </div>
+                            <div class="staff-name">${escapeHtml(staff.username)}</div>
+                            <div class="staff-role">${escapeHtml(staff.role)}</div>
+                        `;
+                        staffList.appendChild(div);
+                    });
+                } else {
+                    // 如果没有管理人员，显示默认消息
+                    staffList.innerHTML = `
+                        <div class="alert alert-info">
+                            <strong>管理人员</strong><br>
+                            当前没有可用的管理人员信息。
+                        </div>
+                    `;
+                }
+            })
+            .catch(error => {
+                console.error('加载管理人员失败:', error);
+                // 如果API失败，显示默认消息
+                const staffList = document.getElementById('staffList');
+                staffList.innerHTML = `
+                    <div class="alert alert-error">
+                        <strong>错误</strong><br>
+                        加载管理人员失败，请稍后重试。
+                    </div>
+                `;
+            });
+        }
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // 导航栏高亮 - 确保使用与updateNavHighlight函数一致的逻辑
+        window.addEventListener('scroll', () => {
+            updateNavHighlight();
+        });
+
+        // 点击模态框外部关闭
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    hideModal(this.id);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
